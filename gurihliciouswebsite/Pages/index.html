@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gurihlicious - Jual Berbagai Risol dan Rice Bowl Premium</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      /* CSS RESET & VARIBLES */
+      :root {
+        --primary-color: #ff6b6b;
+        /* Merah Muda Cerah (Risol) */
+        --secondary-color: #48dbfb;
+        /* Biru Muda Cerah */
+        --dark-color: #2c3e50;
+        --light-color: #ecf0f1;
+        --font-family: "Poppins", sans-serif;
+        --header-height: 80px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-family);
+        color: var(--dark-color);
+        background-color: #f7f7f7;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--dark-color);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      section {
+        padding: 100px 5%;
+        min-height: calc(100vh - var(--header-height));
+      }
+
+      /* HEADER & NAVBAR (Sticky Navigation) */
+      .header {
+        background: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      /* Efek Sticky JavaScript */
+      .header.sticky {
+        height: 70px;
+        /* Sedikit mengecil saat sticky */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+        height: var(--header-height);
+        transition: height 0.3s ease;
+      }
+
+      /* LOGO BRAND */
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--primary-color);
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+      }
+
+      .logo-icon {
+        margin-right: 10px;
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+      }
+
+      /* NAV LINKS */
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 5px 10px;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Fitur Keren: Underline Efek */
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        background: var(--primary-color);
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hamburger Menu (Hanya terlihat di mobile) */
+      .menu-toggle {
+        display: none;
+        /* Sembunyikan di desktop */
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: var(--dark-color);
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      /* HERO SECTION (BERANDA) */
+      #beranda {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #ff9f43 100%
+        );
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        padding-top: var(--header-height);
+      }
+
+      .hero-content {
+        max-width: 800px;
+        /* Animasi Intro */
+        animation: fadeInDown 1s ease-out;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--secondary-color);
+        color: var(--dark-color);
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: transform 0.3s ease, background 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button:hover {
+        background: #00cec9;
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* PRODUK SECTION */
+      #produk {
+        background-color: var(--light-color);
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 3rem;
+        margin-bottom: 60px;
+        font-weight: 900;
+        color: var(--dark-color);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 6px;
+        background: var(--primary-color);
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px;
+      }
+
+      /* KUNCI RESPONSIVITAS: CSS GRID */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        /* Fitur Keren: Hover Transform */
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+          box-shadow 0.4s ease;
+        text-align: left;
+      }
+
+      .product-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .product-card:hover img {
+        transform: scale(1.08);
+        /* Efek zoom in pada gambar saat hover */
+      }
+
+      .product-info {
+        padding: 20px;
+      }
+
+      .product-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .product-info p {
+        font-size: 0.95rem;
+        color: #7f8c8d;
+        margin-bottom: 15px;
+      }
+
+      .buy-button {
+        display: inline-block;
+        background: var(--primary-color);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+
+      .buy-button:hover {
+        background: #e74c3c;
+      }
+
+      /* TENTANG KAMI SECTION */
+      #tentang-kami {
+        background-color: #ffffff;
+        text-align: center;
+      }
+
+      .brand-story {
+        max-width: 900px;
+        margin: 0 auto 60px;
+        font-size: 1.1rem;
+        color: #555;
+        text-align: center;
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 20px;
+      }
+
+      .team-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        /* Penting untuk responsif */
+        gap: 30px;
+      }
+
+      .team-member {
+        background: var(--light-color);
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        width: 200px;
+        transition: all 0.3s ease;
+        border-bottom: 5px solid var(--primary-color);
+      }
+
+      .team-member:hover {
+        background: #ecf0f1;
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .team-member h4 {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+        color: var(--dark-color);
+      }
+
+      .team-member p {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      /* FOOTER */
+      .footer {
+        background: var(--dark-color);
+        color: var(--light-color);
+        text-align: center;
+        padding: 30px 5%;
+        font-size: 0.9rem;
+      }
+
+      .footer p {
+        margin-bottom: 15px;
+      }
+
+      .social-links a {
+        color: var(--light-color);
+        margin: 0 12px;
+        font-size: 1.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+
+      /* ==================================== */
+      /* RESPONSIVE DESIGN (MOBILE & TABLET) */
+      /* ==================================== */
+
+      @media (max-width: 992px) {
+        /* Pengecilan Umum untuk Tablet */
+        .hero-content h1 {
+          font-size: 3.5rem;
+        }
+
+        .section-title {
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        /* Pengecilan untuk Mobile */
+        .navbar {
+          height: 70px;
+        }
+
+        .logo {
+          font-size: 1.5rem;
+        }
+
+        /* Sembunyikan Nav Links dan Tampilkan Hamburger */
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background: white;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          padding: 20px 0;
+          border-top: 1px solid #eee;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+          text-align: center;
+        }
+
+        .nav-links a::after {
+          width: 50%;
+        }
+
+        .menu-toggle {
+          display: block;
+          /* Tampilkan tombol hamburger */
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-content p {
+          font-size: 1.1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+          margin-bottom: 40px;
+        }
+
+        /* Grid Produk akan otomatis menjadi 1 kolom */
+        .product-card {
+          text-align: center;
+        }
+
+        .product-info {
+          text-align: center;
+        }
+
+        .team-grid {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header" id="header">
+      <nav class="navbar">
+        <a href="#beranda" class="logo">
+          <img
+            src="../Assets/Img/Logo.jpg"
+            alt=""
+            style="width: 75px; transform: translateX(-25px) translateY(-7px)"
+          />
+          Gurihlicious
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#produk">Produk</a></li>
+          <li><a href="#tentang-kami">Tentang Kami</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <hr />
+
+    <section id="beranda">
+      <div class="hero-content">
+        <h1>Cita Rasa Premium, Gurihlicious di Setiap Gigitan!</h1>
+        <p>
+          Sajikan kelezatan Risol dan Rice Bowl terbaik, dibuat dengan
+          bahan-bahan pilihan yang memanjakan lidah Anda.
+        </p>
+        <a href="#produk" class="cta-button"
+          >Lihat Menu Sekarang <i class="fas fa-arrow-down"></i
+        ></a>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="produk">
+      <h2 class="section-title">✨ Menu Unggulan Kami ✨</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="../Assets/Img/RM.jpeg" alt="Risol Mayo" />
+          <div class="product-info">
+            <h3>Risol Mayo Creamy</h3>
+            <p>
+              Risol klasik dengan isian mayones, telur, dan sosis yang lumer di
+              mulut. Favorit semua kalangan!
+            </p>
+            <a
+              href="#"
+              onclick="pesanViaWA('Risol Mayo Creamy')"
+              class="buy-button"
+              >Pesan Sekarang</a
+            >
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="../Assets/Img/RAS.jpeg" alt="Risol Ayam Suwir" />
+          <div class="product-info">
+            <h3>Risol Ayam Suwir Pedas</h3>
+            <p>
+              Perpaduan kulit risol lembut dan isian ayam suwir berbumbu pedas
+              yang menggugah selera.
+            </p>
+            <a
+              href="#"
+              onclick="pesanViaWA('Risol Ayam Suwir')"
+              class="buy-button"
+              >Pesan Sekarang</a
+            >
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="../Assets/Img/RKW_.jpeg" alt="Risol Kentang Wortel" />
+          <div class="product-info">
+            <h3>Risol Kentang Wortel Gurih</h3>
+            <p>
+              Varian sehat dan klasik dengan isian kentang dan wortel yang
+              dibumbui spesial. Cocok untuk cemilan ringan.
+            </p>
+            <a
+              href="#"
+              onclick="pesanViaWA('Risol Kentang Wortel')"
+              class="buy-button"
+              >Pesan Sekarang</a
+            >
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="../Assets/Img/RB.jpg" alt="Rice Bowl" />
+          <div class="product-info">
+            <h3>Rice Bowl Premium</h3>
+            <p>
+              Nasi hangat dengan berbagai topping lezat. Pilihan menu kenyang
+              untuk makan siang atau malam!
+            </p>
+            <a href="#" onclick="pesanViaWA('Rice Bowl')" class="buy-button"
+              >Pesan Sekarang</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="tentang-kami">
+      <h2 class="section-title">💡 Tentang Kami & Tim 💡</h2>
+
+      <div class="brand-story">
+        <p>
+          <strong>Gurihlicious</strong> hadir dari semangat untuk menyajikan
+          makanan ringan dan berat dengan kualitas premium dan cita rasa yang
+          otentik. Kami percaya bahwa kelezatan sejati berasal dari bahan-bahan
+          terbaik, diolah dengan hati, untuk menciptakan pengalaman makan yang
+          **memuaskan dan berkesan** bagi setiap pelanggan. Fokus utama kami
+          adalah menjaga kualitas, kebersihan, dan inovasi rasa.
+        </p>
+      </div>
+
+      <h3>Tentang Kami</h3>
+      <div class="team-grid">
+        <div class="team-member">
+          <h4>Arsabil Rasyid</h4>
+          <p>Co-Founder</p>
+        </div>
+        <div class="team-member">
+          <h4>M Wildan H.R</h4>
+          <p>Co-Founder</p>
+        </div>
+        <div class="team-member">
+          <h4>Hamzah Sulaiman</h4>
+          <p>Co-Founder</p>
+        </div>
+        <div class="team-member">
+          <h4>Matlufi</h4>
+          <p>Co-Founder</p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <footer class="footer">
+      <p>&copy; 2025 Gurihlicious. Dibuat oleh Tim Terbaik.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.getElementById("header");
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+      // Ambil semua tautan yang mengarah ke bagian internal (menggunakan #)
+      const navItems = navLinks.querySelectorAll('a[href^="#"]');
+
+      // FITUR 1: Sticky Navbar
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      });
+
+      // FITUR 2: Menu Hamburger (Responsif)
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // FITUR 3: Smooth Scroll (Geser Layar Smooth)
+      navItems.forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault(); // Mencegah perilaku lompatan default
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            // Gunakan fungsi scrollIntoView dengan behavior: 'smooth' untuk animasi geser layar
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+            });
+
+            // Tutup menu hamburger setelah mengklik tautan (untuk mobile)
+            if (navLinks.classList.contains("active")) {
+              setTimeout(() => {
+                navLinks.classList.remove("active");
+              }, 500); // Penundaan 500ms
+            }
+          }
+        });
+      });
+
+      function pesanViaWA(namaProduk) {
+        const nomorTujuan = "6287778013370"; // Nomor WA (kode negara 62)
+
+        // Pesan yang akan terisi otomatis, menggunakan encodeURIComponent
+        const pesanAwal = `Halo Gurihlicious! Saya ingin memesan produk berikut: *${namaProduk}*.\n\nMohon informasikan total harga dan prosedur pemesanannya. Terima kasih!`;
+
+        const urlWA = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(
+          pesanAwal
+        )}`;
+
+        // Membuka link di tab baru
+        window.open(urlWA, "_blank");
+      }
+    </script>
+  </body>
+</html>
